@@ -42,7 +42,11 @@ jobs:
 
       - name: Build
         env:
-          VITE_BASE_PATH: /afterhourscamp/
+          # Custom domain (afterhourscamp.com.au) is served at the root, so base = /.
+          # If you ever revert to project-page hosting (mattthedesingguy.github.io/afterhourscamp/),
+          # change this back to /afterhourscamp/ and flip pathSegmentsToKeep in public/404.html
+          # back to 1.
+          VITE_BASE_PATH: /
         run: npm run build
 
       - name: Setup Pages
