@@ -64,7 +64,7 @@ export function Tickets() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg text-white/95 drop-shadow"
           >
-            Fri 30 Oct – Mon 2 Nov 2026 • Camp Kiah, Grantville VIC
+            Fri 30 Oct – Mon 2 Nov 2026
           </motion.p>
         </div>
       </section>
