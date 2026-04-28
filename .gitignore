@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.DS_Store
+.env
+.env.local
+*.log
+.vite/
+
+# Claude Code local state
+.claude/
+
+# Temporary backup created by scripts/optimize-gallery.mjs.
+# Delete the folder once you've verified the optimized output looks right.
+src/assets/_gallery-original/

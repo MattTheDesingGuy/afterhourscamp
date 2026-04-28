@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afterhours — Play by Day, Party by Night</title>
+    <meta name="description" content="Adults-only weekend camp retreats in Victoria, Australia. Play by day, party by night. Activities, parties, all-inclusive." />
+    <meta name="theme-color" content="#050B2F" />
+
+    <!-- Favicons (Vite rewrites the leading / to include the configured base path) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph (og:image must be an absolute URL for external scrapers) -->
+    <meta property="og:title" content="Afterhours — Play by Day, Party by Night" />
+    <meta property="og:description" content="Adults-only weekend camp retreats in Victoria, Australia." />
+    <meta property="og:image" content="https://afterhourscamp.com.au/og-image.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://afterhourscamp.com.au" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- SPA 404 redirect decoder — pairs with public/404.html (rafgraph SPA pattern) -->
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function (s) {
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      }(window.location));
+    </script>
+
+    <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

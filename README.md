@@ -55,15 +55,20 @@ npm run preview
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml          # GitHub Actions deploy pipeline
-├── brand-assets/               # Master brand files (SVG, PNG, JPG)
-│   ├── final_LOGO/
+├── brand-assets/               # Master brand archive (SVG, PNG, JPG)
+│   ├── final_LOGO/             # — committed for reference, NOT bundled
 │   ├── final_ICON/
 │   └── final_WORDMARK/
 ├── public/                     # Static files served as-is
 │   ├── 404.html                # SPA redirect for GitHub Pages
 │   ├── favicon.ico
+│   ├── favicon-32.png
+│   ├── favicon-192.png
+│   ├── apple-touch-icon.png
 │   ├── og-image.png
-│   └── brand/                  # Logos used by the site
+│   └── brand/                  # Logos used by the live site
+│       ├── icon-gradient.svg   # nav bar
+│       └── full-white-logo.svg # footer
 ├── src/
 │   ├── app/
 │   │   ├── components/         # Layout, Navigation, Footer, Button
@@ -87,19 +92,21 @@ These values are baked into `src/styles/theme.css` — change them there if need
 
 ### Colours
 
-| Name         | Hex       |
-| ------------ | --------- |
-| Navy         | `#1C325A` |
-| Sunset orange| `#FBB040` |
-| Hot pink     | `#EA0A8C` |
-| Light grey   | `#EEEEEF` |
+| Name             | Hex       | Notes |
+| ---------------- | --------- | ----- |
+| Web navy         | `#050B2F` | Used across the site (nav, footer, dark backgrounds) |
+| Sunset orange    | `#FBB040` | Accent / hover states |
+| Hot pink         | `#EA0A8C` | Accent / gradient endpoint |
+| Light grey       | `#EEEEEF` | Backgrounds, dividers |
+
+> **Note on navy:** the brand guide PDF lists navy as `#1C325A`. The web build uses a deeper `#050B2F` — this is intentional, chosen for stronger contrast in digital surfaces and for the gradient-icon-on-navy combination used in the navigation. Print collateral can continue to use `#1C325A` as per the brand guide.
 
 ### Fonts
 
-- **Porcelain** (headlines) — loaded via Adobe Typekit kit `awa3yvm`
-- **Poppins** (body) — loaded via Google Fonts
+- **Gochi Hand** (headlines) — Google Fonts, single weight (400). Loaded via `src/styles/fonts.css`.
+- **Poppins** (body) — Google Fonts, weights 400 / 600 / 700.
 
-> ⚠️ **Typekit domain authorization required.** Porcelain only loads on domains added to the Typekit kit. When deploying to a new URL (GitHub Pages subdomain or custom domain), log into Adobe Fonts → Kits → kit `awa3yvm` → Domains, and add the new hostname. Otherwise the headline font silently falls back.
+> **Note on headline weight:** Gochi Hand only ships in Regular (400). Do not apply `font-bold`, `font-semibold`, or `font-extrabold` to headline elements — the browser will synthesise a fake bold which distorts the hand‑drawn letterforms. Use size and colour for hierarchy instead.
 
 ### Taglines
 
@@ -108,6 +115,18 @@ These values are baked into `src/styles/theme.css` — change them there if need
 - _Adults deserve recess too._
 
 The full brand guide lives in `brand-assets/AfterHoursBrandGuide.pdf`.
+
+### Logo files used by the site
+
+The full master archive is in `brand-assets/`. The site itself only uses these specific files (copied into `public/brand/`):
+
+| Site location | File |
+|---|---|
+| Nav bar (48×48 on navy) | `public/brand/icon-gradient.svg` (← `final_ICON/SVG/ICON-Gradient.svg`) |
+| Footer (120×120 on navy) | `public/brand/full-white-logo.svg` (← `final_LOGO/SVG/FULL-White-Logo.svg`) |
+| Favicon (16/32/192) | Generated from `final_ICON/SVG/ICON-Gradient.svg` |
+| Apple touch icon (180×180) | Generated from `final_ICON/PNG/ICON-Gradient-on-navy_PNG.png` |
+| OG share image (1200×630) | Generated from `final_LOGO/PNG/FULL-Gradient-Logo-on-navy_PNG.png` |
 
 ---
 
@@ -174,9 +193,8 @@ Tailwind v4 uses CSS variables defined in `src/styles/theme.css`. Use brand toke
 ## Credits
 
 - Built by **Matt** ([@yourhandle](https://github.com/)) — web design & development
-- Brand identity and copy by **Afterhours** (founder: Abi Carter)
+- Brand identity by **Afterhours** (founder: Abi Carter)
 - Some imagery sourced from [Unsplash](https://unsplash.com) under the Unsplash license
-- UI components originally based on [shadcn/ui](https://ui.shadcn.com/) (MIT)
 
 ---
 
